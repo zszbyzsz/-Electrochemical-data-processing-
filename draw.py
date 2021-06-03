@@ -60,13 +60,27 @@ root = tk.Tk()
 root.withdraw()
 Floderpath = filedialog.askdirectory()
 
-#读取文件夹下所有文件，并到处绝对路径至pathnames
+#读取文件夹下所有文件，并导出绝对路径至pathnames
 path = os.path.join(Floderpath)
 filenames = os.listdir(path)
 pathnames = [os.path.join(path, filename) for filename in filenames]
 #保存图片名字为所读文件夹名字
 image_name = path.split('\\')
 
+#数据的提取与名字的整合
+data = [[]] * len(pathnames)
+for i in range(len(pathnames)):
+    data[i] = process(pathnames[i])
+key_1 = int(input("是否要排序？1是排序，0为不排序"))
+if key_1 == 1:
+    filenames.sort(key=lambda x: int(x[:-6]))
+elif key_1 == 0:
+    pass
+else:
+    print("我也不知道啊~")
+for i in range(len(filenames)): #去除后缀.dta
+    filenames[i] = filenames[i].strip(".DTA")
+    
 #创建空的嵌套列表并，并对上述读取的列表进行读取操作，保存在嵌套列表中
 data = [[]] * len(pathnames)
 for i in range(len(pathnames)):
@@ -109,6 +123,7 @@ else:
 for i in range(len(pathnames)):
     plt.plot(data[i][0],data[i][1], label = "%s"%filenames[i],linewidth=1.2, linestyle="-")
 #生成图例
+plt.legend()
 
 plt.savefig('%s'%image_name[-1] + '.png', format='png')  #保存为特定类型的图： eps, jpeg, jpg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff
 plt.show()#展示图片
