@@ -1,4 +1,4 @@
-# -Electrochemical-data-processing-
+# 电化学数据处理-Electrochemical-data-processing
 少数的电化学数据可以通过origin进行分离处理，但很多的电化学数据处理起来就略显吃力。
 这里用python进行gamry数据（CV和阻抗）数据分析处理，并导出矢量图。
 对于多图进行colormap自动生成相协调的颜色。
