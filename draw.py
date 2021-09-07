@@ -44,7 +44,7 @@ def process(filename):
         data_y = [y*1000*1282.05 for y in data_y] #所×数值为单位面积下的安数值
     return data_x,data_y,lable
 #读取文件夹下所有文件，并导出绝对路径至pathnames
-Floderpath = r"G:\桌面\文章\实验数据\电化学数据\优质数据（已整理）\不同材料CV曲线（100mv）扫描速率 - 副本"
+Floderpath = r"location"
 path = os.path.join(Floderpath)
 filenames = os.listdir(path)
 flod = []
